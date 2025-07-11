@@ -1,0 +1,10 @@
+(
+address: localhost:6600,
+password: None,
+cache_dir: /mnt/big/data/rmpc/cache/,
+lyrics_dir: /mnt/big/data/rmpc/lyrics/,
+volume_step: 5,
+enable_mouse: true,
+enable_config_hot_reload: true,
+music_directory
+)

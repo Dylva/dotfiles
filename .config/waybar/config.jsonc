@@ -4,16 +4,16 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 20, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
+    "spacing": 2, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "mpris"
     ],
     "modules-center": [
         "hyprland/window"
     ],
     "modules-right": [
-        "mpd",
         "pulseaudio",
         "network",
         "cpu",
@@ -49,8 +49,10 @@
         "format": "<span style=\"italic\">{}</span>"
     },
     "mpd": {
+        "server":"localhost",
+        "port":"6600",
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
+        "format-disconnected": "Disconnected",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
         "unknown-tag": "N/A",
         "interval": 5,
@@ -151,7 +153,19 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pwvucontrol"
+    },
+    "mpris": {
+        "format": "{player_icon} {artist} - {title}",
+	    "format-paused": "{player_icon} <i>{artist} - {title}</i>",
+	    "player-icons": {
+		"default": "▶",
+		"mpv": "🎵"
+	    },
+	    "status-icons": {
+		"paused": "⏸"
+	},
+	// "ignored-players": ["firefox"]
     },
     "custom/media": {
         "format": "{icon} {text}",
@@ -166,7 +180,7 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format" : "⏻ ",
+        "format" : " ⏻ ",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
@@ -177,4 +191,7 @@
 			"hibernate": "systemctl hibernate"
 		}
     }
+
+    
+
 }
